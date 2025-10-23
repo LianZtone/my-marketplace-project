@@ -40,8 +40,3 @@ Website marketplace modern untuk produk-produk organik dan gaya hidup sehat.
 8. **Newsletter** - Form berlangganan
 9. **Footer** - Informasi kontak
 
-## 🚀 Cara Menjalankan
-
-1. Clone repository ini:
-```bash
-git clone https://github.com/LianZtone/my-marketplace-project.git
