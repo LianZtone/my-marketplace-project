@@ -34,9 +34,6 @@
 
                     <UserMenu :user="user" :cart-count="cartCount" />
 
-
-
-
                     <div class="hamburger" @click="toggleMenu" :class="{ active: isMenuActive }">
                         <span></span>
                         <span></span>
@@ -49,7 +46,6 @@
 </template>
 
 <script setup>
-import Swal from 'sweetalert2'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import UserMenu from '@/components/user/UserMenu.vue'
 
@@ -90,28 +86,7 @@ function handleClickOutside(event) {
     }
 }
 
-function logout() {
-    Swal.fire({
-        title: 'Konfirmasi Keluar',
-        text: 'Apakah Anda yakin ingin keluar dari akun?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Ya, keluar',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Aksi logout
-            Swal.fire({
-                title: 'Logout Berhasil!',
-                text: 'Anda telah keluar dari akun.',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            })
-            isDropdownOpen.value = false
-            // Tambahkan logika lain di sini (misal: hapus token, redirect, dll)
-        }
-    })
-}
+
 
 onMounted(() => {
     document.addEventListener('click', handleClickOutside)
@@ -206,9 +181,6 @@ header {
         }
     }
 }
-
-
-
 
 .nav-icons {
     display: flex;
@@ -353,6 +325,7 @@ header {
         border: none;
         float: left;
         width: 80%;
+        border-color: $primary;
         box-shadow: $card-shadow;
         background: $white;
 
