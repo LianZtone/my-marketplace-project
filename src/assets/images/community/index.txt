@@ -1,0 +1,131 @@
+ joinProject(project) {
+            Swal.fire({
+                title: `Ikut Proyek: ${project.title}`,
+                text: 'Apakah Anda ingin bergabung dalam proyek komunitas ini?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Bergabung',
+                cancelButtonText: 'Batal',
+                confirmButtonColor: '#4CAF50'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Berhasil!',
+                        text: 'Anda telah bergabung dengan proyek ini. Tim kami akan menghubungi Anda.',
+                        icon: 'success',
+                        confirmButtonColor: '#4CAF50'
+                    });
+                }
+            });
+        },
+        
+        viewProject(project) {
+            Swal.fire({
+                title: project.title,
+                html: `
+                    <div style="text-align: left;">
+                        <img src="${project.image}" alt="${project.title}" 
+                             style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                        <p><strong>Deskripsi:</strong> ${project.description}</p>
+                        <p><strong>Progress:</strong> ${project.progress}%</p>
+                        <p><strong>Peserta:</strong> ${project.participants} orang</p>
+                        <p><strong>Deadline:</strong> ${project.daysLeft} hari lagi</p>
+                        <hr>
+                        <p><em>Detail lengkap proyek akan tersedia di halaman proyek...</em></p>
+                    </div>
+                `,
+                showCloseButton: true,
+                showConfirmButton: false,
+                width: 500
+            });
+        },
+
+
+
+
+
+        <!-- <script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import UserMenu from './UserMenu.vue'
+
+// === State ===
+const isMenuActive = ref(false)
+const cartCount = ref(3)
+const searchQuery = ref('')
+const isLoggedIn = ref(false)
+const user = ref(null)
+const showUserMenu = ref(false)
+
+// === Fungsi ===
+function toggleMenu() {
+    isMenuActive.value = !isMenuActive.value
+}
+
+function toggleUserMenu() {
+    showUserMenu.value = !showUserMenu.value
+}
+
+function logout() {
+    localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('user')
+    isLoggedIn.value = false
+    user.value = null
+    showUserMenu.value = false
+}
+
+function openSearch() {
+    const overlay = document.getElementById("myOverlay")
+    const icon = document.getElementById("search-icon")
+    if (!overlay || !icon) return
+
+    const isOpen = overlay.style.display === "block"
+    overlay.style.display = isOpen ? "none" : "block"
+    icon.className = isOpen ? "fas fa-search" : "fas fa-times"
+}
+
+function handleSearch() {
+    if (searchQuery.value.trim()) {
+        console.log('Searching for:', searchQuery.value)
+        openSearch()
+    }
+}
+
+function checkAuthState() {
+    const loggedIn = localStorage.getItem('isLoggedIn')
+    const userData = localStorage.getItem('user')
+
+    if (loggedIn === 'true' && userData) {
+        isLoggedIn.value = true
+        user.value = JSON.parse(userData)
+    }
+}
+
+// === Lifecycle ===
+onMounted(() => {
+    checkAuthState()
+
+    // Tutup search saat scroll
+    window.addEventListener("scroll", () => {
+        const overlay = document.getElementById("myOverlay")
+        const icon = document.getElementById("search-icon")
+        if (overlay && overlay.style.display === "block") {
+            overlay.style.display = "none"
+            if (icon) icon.className = "fas fa-search"
+        }
+    })
+
+    // Tutup dropdown user kalau klik di luar
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest('.nav-icon')) {
+            showUserMenu.value = false
+        }
+    })
+})
+
+onBeforeUnmount(() => {
+    document.removeEventListener("click", () => { })
+    window.removeEventListener("scroll", () => { })
+})
+
+
+</script> -->
