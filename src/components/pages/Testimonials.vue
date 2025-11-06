@@ -27,41 +27,43 @@
     </section>
 </template>
 
-<script>
-export default {
-    name: 'Testimonials',
-    data() {
-        return {
-            testimonials: [
-                {
-                    id: 1,
-                    text: "Sejak berbelanja di GreenLife, saya merasakan perubahan positif pada kesehatan saya. Produknya segar dan berkualitas tinggi.",
-                    rating: 5,
-                    name: "Diana Putri",
-                    role: "Pelanggan Setia",
-                    avatar: "https://randomuser.me/api/portraits/women/65.jpg"
-                },
-                {
-                    id: 2,
-                    text: "Skincare organik dari GreenLife sangat cocok untuk kulit sensitif saya. Alami dan tanpa efek samping.",
-                    rating: 5,
-                    name: "Rina Wijaya",
-                    role: "Pelanggan Setia",
-                    avatar: "https://randomuser.me/api/portraits/women/43.jpg"
-                },
-                {
-                    id: 3,
-                    text: "Pelayanan sangat memuaskan dan pengiriman cepat. Sayuran organiknya selalu fresh dan harga bersaing.",
-                    rating: 4.5,
-                    name: "Budi Santoso",
-                    role: "Pelanggan Setia",
-                    avatar: "https://randomuser.me/api/portraits/men/32.jpg"
-                }
-            ]
-        }
+<script setup>
+import { ref } from 'vue'
+
+import imgavatar1 from '../../assets/images/avatars/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash.webp'
+import imgavatar2 from '../../assets/images/avatars/jake-nackos-IF9TK5Uy-KI-unsplash.webp'
+import imgavatar3 from '../../assets/images/avatars/jurica-koletic-7YVZYZeITc8-unsplash.webp'
+
+const testimonials = ref([
+    {
+        id: 1,
+        text: "Sejak berbelanja di GreenLife, saya merasakan perubahan positif pada kesehatan saya. Produknya segar dan berkualitas tinggi.",
+        rating: 5,
+        name: "Diana Putri",
+        role: "Pelanggan Setia",
+        avatar: imgavatar1
+    },
+    {
+        id: 2,
+        text: "Skincare organik dari GreenLife sangat cocok untuk kulit sensitif saya. Alami dan tanpa efek samping.",
+        rating: 5,
+        name: "Rina Wijaya",
+        role: "Pelanggan Setia",
+        avatar: imgavatar2
+    },
+    {
+
+        id: 3,
+        text: "Pelayanan sangat memuaskan dan pengiriman cepat. Sayuran organiknya selalu fresh dan harga bersaing.",
+        rating: 4.5,
+        name: "Budi Santoso",
+        role: "Pelanggan Setia",
+        avatar: imgavatar3
     }
-}
+])
 </script>
+
+
 
 <style lang="scss" scoped>
 @import "@/style.scss";

@@ -121,105 +121,101 @@
     </section>
 </template>
 
-<script>
-import Swal from 'sweetalert2';
-export default {
-    name: 'Contact',
-    data() {
-        return {
-            loading: false,
-            form: {
-                name: '',
-                email: '',
-                phone: '',
-                subject: '',
-                message: ''
-            },
-            faqs: [
-                {
-                    question: 'Bagaimana cara memesan produk GreenLife?',
-                    answer: 'Anda dapat memesan produk melalui website kami dengan menambahkan produk ke keranjang dan mengikuti proses checkout. Atau Anda bisa menghubungi customer service kami untuk bantuan pemesanan.',
-                    open: false
-                },
-                {
-                    question: 'Apakah semua produk GreenLife benar-benar organik?',
-                    answer: 'Ya, semua produk kami bersertifikat organik dan diproduksi dengan standar organik yang ketat. Kami bekerja sama dengan petani lokal yang menerapkan praktik pertanian organik.',
-                    open: false
-                },
-                {
-                    question: 'Berapa lama waktu pengiriman?',
-                    answer: 'Waktu pengiriman bervariasi tergantung lokasi. Untuk area Jakarta 1-2 hari, kota besar lainnya 2-3 hari, dan luar Jawa 3-7 hari kerja. Pengiriman express tersedia untuk kebutuhan mendesak.',
-                    open: false
-                },
-                {
-                    question: 'Apakah tersedia pengiriman same-day?',
-                    answer: 'Ya, untuk area Jakarta dan sekitarnya kami menyediakan layanan same-day delivery dengan ketentuan tertentu. Silakan hubungi customer service untuk informasi lebih lanjut.',
-                    open: false
-                },
-                {
-                    question: 'Bagaimana cara bergabung dengan komunitas GreenLife?',
-                    answer: 'Anda dapat bergabung dengan komunitas kami melalui halaman komunitas di website atau mengikuti media sosial GreenLife. Kami rutin mengadakan event dan sharing session tentang gaya hidup sehat.',
-                    open: false
-                }
-            ]
-        }
-    },
-    methods: {
-        async submitForm() {
-            if (!this.form.name || !this.form.email || !this.form.subject || !this.form.message) {
-                Swal.fire({
-                    title: 'Oops!',
-                    text: 'Harap isi semua kolom wajib bertanda *',
-                    icon: 'warning',
-                    confirmButtonColor: '#f44336',
-                    confirmButtonText: 'Mengerti'
-                })
-                return
-            }
+<script setup>
+import { ref, reactive } from 'vue'
+import Swal from 'sweetalert2'
 
-            this.loading = true
 
-            try {
-                await new Promise(resolve => setTimeout(resolve, 2000))
+const loading = ref(false)
 
-                Swal.fire({
-                    title: 'Pesan Terkirim!',
-                    text: 'Terima kasih! Kami akan membalas dalam 1x24 jam.',
-                    icon: 'success',
-                    confirmButtonColor: '#4CAF50',
-                    confirmButtonText: 'Oke 👍'
-                })
+const form = reactive({
+  name: '',
+  email: '',
+  phone: '',
+  subject: '',
+  message: ''
+})
 
-                this.form = {
-                    name: '',
-                    email: '',
-                    phone: '',
-                    subject: '',
-                    message: ''
-                }
-            } catch (error) {
-                Swal.fire({
-                    title: 'Gagal Mengirim!',
-                    text: 'Terjadi kesalahan. Silakan coba lagi nanti.',
-                    icon: 'error',
-                    confirmButtonColor: '#f44336',
-                    confirmButtonText: 'Tutup'
-                })
-            } finally {
-                this.loading = false
-            }
-        },
+const faqs = reactive([
+  {
+    question: 'Bagaimana cara memesan produk GreenLife?',
+    answer: 'Anda dapat memesan produk melalui website kami dengan menambahkan produk ke keranjang dan mengikuti proses checkout. Atau Anda bisa menghubungi customer service kami untuk bantuan pemesanan.',
+    open: false
+  },
+  {
+    question: 'Apakah semua produk GreenLife benar-benar organik?',
+    answer: 'Ya, semua produk kami bersertifikat organik dan diproduksi dengan standar organik yang ketat. Kami bekerja sama dengan petani lokal yang menerapkan praktik pertanian organik.',
+    open: false
+  },
+  {
+    question: 'Berapa lama waktu pengiriman?',
+    answer: 'Waktu pengiriman bervariasi tergantung lokasi. Untuk area Jakarta 1-2 hari, kota besar lainnya 2-3 hari, dan luar Jawa 3-7 hari kerja. Pengiriman express tersedia untuk kebutuhan mendesak.',
+    open: false
+  },
+  {
+    question: 'Apakah tersedia pengiriman same-day?',
+    answer: 'Ya, untuk area Jakarta dan sekitarnya kami menyediakan layanan same-day delivery dengan ketentuan tertentu. Silakan hubungi customer service untuk informasi lebih lanjut.',
+    open: false
+  },
+  {
+    question: 'Bagaimana cara bergabung dengan komunitas GreenLife?',
+    answer: 'Anda dapat bergabung dengan komunitas kami melalui halaman komunitas di website atau mengikuti media sosial GreenLife. Kami rutin mengadakan event dan sharing session tentang gaya hidup sehat.',
+    open: false
+  }
+])
 
-        toggleFaq(index) {
-            this.faqs[index].open = !this.faqs[index].open
-        },
+async function submitForm() {
+  if (!form.name || !form.email || !form.subject || !form.message) {
+    Swal.fire({
+      title: 'Oops!',
+      text: 'Harap isi semua kolom wajib bertanda *',
+      icon: 'warning',
+      confirmButtonColor: '#f44336',
+      confirmButtonText: 'Mengerti'
+    })
+    return
+  }
 
-        openMap() {
-            window.open('https://maps.google.com', '_blank')
-        }
-    }
+  loading.value = true
+
+  try {
+    await new Promise(resolve => setTimeout(resolve, 2000))
+
+    Swal.fire({
+      title: 'Pesan Terkirim!',
+      text: 'Terima kasih! Kami akan membalas dalam 1x24 jam.',
+      icon: 'success',
+      confirmButtonColor: '#4CAF50',
+      confirmButtonText: 'Oke 👍'
+    })
+
+    form.name = ''
+    form.email = ''
+    form.phone = ''
+    form.subject = ''
+    form.message = ''
+  } catch (error) {
+    Swal.fire({
+      title: 'Gagal Mengirim!',
+      text: 'Terjadi kesalahan. Silakan coba lagi nanti.',
+      icon: 'error',
+      confirmButtonColor: '#f44336',
+      confirmButtonText: 'Tutup'
+    })
+  } finally {
+    loading.value = false
+  }
+}
+
+function toggleFaq(index) {
+  faqs[index].open = !faqs[index].open
+}
+
+function openMap() {
+  window.open('https://maps.google.com', '_blank')
 }
 </script>
+
 
 <style lang="scss" scoped>
 @import "@/style.scss";

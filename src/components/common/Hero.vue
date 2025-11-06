@@ -13,10 +13,10 @@
     </section>
 </template>
 
-<script>
-export default {
+<script setup>
+defineOptions( {
     name: 'Hero'
-}
+})
 </script>
 
 <style lang="scss" scoped>

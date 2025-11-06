@@ -10,12 +10,8 @@
                 <!-- Sidebar Navigation -->
                 <div class="settings-sidebar fade-in">
                     <nav class="settings-nav">
-                        <button 
-                            v-for="tab in tabs" 
-                            :key="tab.id"
-                            :class="['nav-item', { active: activeTab === tab.id }]"
-                            @click="activeTab = tab.id"
-                        >
+                        <button v-for="tab in tabs" :key="tab.id"
+                            :class="['nav-item', { active: activeTab === tab.id }]" @click="activeTab = tab.id">
                             <i :class="tab.icon"></i>
                             <span>{{ tab.label }}</span>
                         </button>
@@ -27,56 +23,36 @@
                     <!-- Account Settings -->
                     <div v-if="activeTab === 'account'" class="card tab-content fade-in delay-1">
                         <h3>Pengaturan Akun</h3>
-                        
+
                         <form @submit.prevent="updateAccount" class="settings-form">
                             <div class="form-grid grid grid-2">
                                 <div class="form-group">
                                     <label for="firstName">Nama Depan</label>
-                                    <input 
-                                        type="text" 
-                                        id="firstName"
-                                        v-model="account.firstName"
-                                        placeholder="Masukkan nama depan"
-                                    >
+                                    <input type="text" id="firstName" v-model="account.firstName"
+                                        placeholder="Masukkan nama depan">
                                 </div>
                                 <div class="form-group">
                                     <label for="lastName">Nama Belakang</label>
-                                    <input 
-                                        type="text" 
-                                        id="lastName"
-                                        v-model="account.lastName"
-                                        placeholder="Masukkan nama belakang"
-                                    >
+                                    <input type="text" id="lastName" v-model="account.lastName"
+                                        placeholder="Masukkan nama belakang">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input 
-                                    type="email" 
-                                    id="email"
-                                    v-model="account.email"
-                                    placeholder="Masukkan alamat email"
-                                >
+                                <input type="email" id="email" v-model="account.email"
+                                    placeholder="Masukkan alamat email">
                             </div>
 
                             <div class="form-group">
                                 <label for="phone">Nomor Telepon</label>
-                                <input 
-                                    type="tel" 
-                                    id="phone"
-                                    v-model="account.phone"
-                                    placeholder="Masukkan nomor telepon"
-                                >
+                                <input type="tel" id="phone" v-model="account.phone"
+                                    placeholder="Masukkan nomor telepon">
                             </div>
 
                             <div class="form-group">
                                 <label for="birthdate">Tanggal Lahir</label>
-                                <input 
-                                    type="date" 
-                                    id="birthdate"
-                                    v-model="account.birthdate"
-                                >
+                                <input type="date" id="birthdate" v-model="account.birthdate">
                             </div>
 
                             <div class="form-group">
@@ -105,7 +81,7 @@
                     <!-- Security Settings -->
                     <div v-else-if="activeTab === 'security'" class="card tab-content fade-in delay-1">
                         <h3>Keamanan Akun</h3>
-                        
+
                         <div class="security-sections">
                             <!-- Change Password -->
                             <div class="security-section">
@@ -114,17 +90,11 @@
                                     <div class="form-group">
                                         <label for="currentPassword">Password Saat Ini</label>
                                         <div class="password-input">
-                                            <input 
-                                                :type="showCurrentPassword ? 'text' : 'password'"
-                                                id="currentPassword"
-                                                v-model="password.current"
-                                                placeholder="Masukkan password saat ini"
-                                            >
-                                            <button 
-                                                type="button" 
-                                                class="password-toggle"
-                                                @click="showCurrentPassword = !showCurrentPassword"
-                                            >
+                                            <input :type="showCurrentPassword ? 'text' : 'password'"
+                                                id="currentPassword" v-model="password.current"
+                                                placeholder="Masukkan password saat ini">
+                                            <button type="button" class="password-toggle"
+                                                @click="showCurrentPassword = !showCurrentPassword">
                                                 <i :class="showCurrentPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
                                             </button>
                                         </div>
@@ -133,17 +103,10 @@
                                     <div class="form-group">
                                         <label for="newPassword">Password Baru</label>
                                         <div class="password-input">
-                                            <input 
-                                                :type="showNewPassword ? 'text' : 'password'"
-                                                id="newPassword"
-                                                v-model="password.new"
-                                                placeholder="Masukkan password baru"
-                                            >
-                                            <button 
-                                                type="button" 
-                                                class="password-toggle"
-                                                @click="showNewPassword = !showNewPassword"
-                                            >
+                                            <input :type="showNewPassword ? 'text' : 'password'" id="newPassword"
+                                                v-model="password.new" placeholder="Masukkan password baru">
+                                            <button type="button" class="password-toggle"
+                                                @click="showNewPassword = !showNewPassword">
                                                 <i :class="showNewPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
                                             </button>
                                         </div>
@@ -152,27 +115,17 @@
                                     <div class="form-group">
                                         <label for="confirmPassword">Konfirmasi Password Baru</label>
                                         <div class="password-input">
-                                            <input 
-                                                :type="showConfirmPassword ? 'text' : 'password'"
-                                                id="confirmPassword"
-                                                v-model="password.confirm"
-                                                placeholder="Konfirmasi password baru"
-                                            >
-                                            <button 
-                                                type="button" 
-                                                class="password-toggle"
-                                                @click="showConfirmPassword = !showConfirmPassword"
-                                            >
+                                            <input :type="showConfirmPassword ? 'text' : 'password'"
+                                                id="confirmPassword" v-model="password.confirm"
+                                                placeholder="Konfirmasi password baru">
+                                            <button type="button" class="password-toggle"
+                                                @click="showConfirmPassword = !showConfirmPassword">
                                                 <i :class="showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
                                             </button>
                                         </div>
                                     </div>
 
-                                    <button 
-                                        type="submit" 
-                                        class="btn"
-                                        :disabled="changingPassword"
-                                    >
+                                    <button type="submit" class="btn" :disabled="changingPassword">
                                         <i class="fas fa-key" v-if="!changingPassword"></i>
                                         <i class="fas fa-spinner fa-spin" v-else></i>
                                         {{ changingPassword ? 'Mengubah...' : 'Ubah Password' }}
@@ -194,7 +147,7 @@
                                             <span class="slider"></span>
                                         </label>
                                     </div>
-                                    
+
                                     <div v-if="security.twoFactor" class="two-factor-setup">
                                         <p class="setup-info">
                                             <i class="fas fa-info-circle"></i>
@@ -225,7 +178,7 @@
                                             Sesi Aktif
                                         </button>
                                     </div>
-                                    
+
                                     <div class="session-item">
                                         <div class="session-info">
                                             <h5>iPhone 13</h5>
@@ -237,7 +190,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                
+
                                 <button class="btn btn-outline btn-sm logout-all-btn" @click="logoutAllDevices">
                                     <i class="fas fa-sign-out-alt"></i> Keluar dari Semua Perangkat
                                 </button>
@@ -248,7 +201,7 @@
                     <!-- Notifications Settings -->
                     <div v-else-if="activeTab === 'notifications'" class="card tab-content fade-in delay-1">
                         <h3>Pengaturan Notifikasi</h3>
-                        
+
                         <div class="notification-sections">
                             <!-- Email Notifications -->
                             <div class="notification-section">
@@ -264,7 +217,7 @@
                                             <span class="slider"></span>
                                         </label>
                                     </div>
-                                    
+
                                     <div class="notification-item">
                                         <div class="notification-info">
                                             <h5>Produk Baru</h5>
@@ -275,7 +228,7 @@
                                             <span class="slider"></span>
                                         </label>
                                     </div>
-                                    
+
                                     <div class="notification-item">
                                         <div class="notification-info">
                                             <h5>Artikel dan Tips</h5>
@@ -303,7 +256,7 @@
                                             <span class="slider"></span>
                                         </label>
                                     </div>
-                                    
+
                                     <div class="notification-item">
                                         <div class="notification-info">
                                             <h5>Pengingat Stok</h5>
@@ -314,7 +267,7 @@
                                             <span class="slider"></span>
                                         </label>
                                     </div>
-                                    
+
                                     <div class="notification-item">
                                         <div class="notification-info">
                                             <h5>Aktivitas Komunitas</h5>
@@ -342,7 +295,7 @@
                                             <span class="slider"></span>
                                         </label>
                                     </div>
-                                    
+
                                     <div class="notification-item">
                                         <div class="notification-info">
                                             <h5>Update Pengiriman</h5>
@@ -370,7 +323,7 @@
                     <!-- Privacy Settings -->
                     <div v-else-if="activeTab === 'privacy'" class="card tab-content fade-in delay-1">
                         <h3>Privasi dan Data</h3>
-                        
+
                         <div class="privacy-sections">
                             <!-- Data Privacy -->
                             <div class="privacy-section">
@@ -386,7 +339,7 @@
                                             <span class="slider"></span>
                                         </label>
                                     </div>
-                                    
+
                                     <div class="privacy-item">
                                         <div class="privacy-info">
                                             <h5>Riwayat Aktivitas</h5>
@@ -397,7 +350,7 @@
                                             <span class="slider"></span>
                                         </label>
                                     </div>
-                                    
+
                                     <div class="privacy-item">
                                         <div class="privacy-info">
                                             <h5>Personalized Ads</h5>
@@ -452,7 +405,7 @@ import Swal from 'sweetalert2'
 
 const router = useRouter()
 
-// === State ===
+
 const activeTab = ref('account')
 const saving = ref(false)
 const changingPassword = ref(false)
@@ -462,52 +415,52 @@ const showNewPassword = ref(false)
 const showConfirmPassword = ref(false)
 
 const tabs = [
-  { id: 'account', label: 'Akun', icon: 'fas fa-user-cog' },
-  { id: 'security', label: 'Keamanan', icon: 'fas fa-shield-alt' },
-  { id: 'notifications', label: 'Notifikasi', icon: 'fas fa-bell' },
-  { id: 'privacy', label: 'Privasi', icon: 'fas fa-lock' }
+    { id: 'account', label: 'Akun', icon: 'fas fa-user-cog' },
+    { id: 'security', label: 'Keamanan', icon: 'fas fa-shield-alt' },
+    { id: 'notifications', label: 'Notifikasi', icon: 'fas fa-bell' },
+    { id: 'privacy', label: 'Privasi', icon: 'fas fa-lock' }
 ]
 
 const account = reactive({
-  firstName: 'Diana',
-  lastName: 'Sari',
-  email: 'diana.sari@email.com',
-  phone: '+6281234567890',
-  birthdate: '1990-05-15',
-  gender: 'female'
+    firstName: 'Diana',
+    lastName: 'Sari',
+    email: 'diana.sari@email.com',
+    phone: '+6281234567890',
+    birthdate: '1990-05-15',
+    gender: 'female'
 })
 
 const password = reactive({
-  current: '',
-  new: '',
-  confirm: ''
+    current: '',
+    new: '',
+    confirm: ''
 })
 
 const security = reactive({
-  twoFactor: false
+    twoFactor: false
 })
 
 const notifications = reactive({
-  email: {
-    promotions: true,
-    newProducts: true,
-    articles: true
-  },
-  push: {
-    orderUpdates: true,
-    stockReminders: false,
-    community: true
-  },
-  sms: {
-    orderConfirmation: true,
-    shippingUpdates: false
-  }
+    email: {
+        promotions: true,
+        newProducts: true,
+        articles: true
+    },
+    push: {
+        orderUpdates: true,
+        stockReminders: false,
+        community: true
+    },
+    sms: {
+        orderConfirmation: true,
+        shippingUpdates: false
+    }
 })
 
 const privacy = reactive({
-  publicProfile: false,
-  activityHistory: true,
-  personalizedAds: false
+    publicProfile: false,
+    activityHistory: true,
+    personalizedAds: false
 })
 
 const originalAccount = ref({ ...account })
@@ -515,223 +468,223 @@ const originalAccount = ref({ ...account })
 // === Methods ===
 
 async function updateAccount() {
-  saving.value = true
-  try {
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    Object.assign(originalAccount.value, account)
-    Swal.fire({
-      title: 'Berhasil!',
-      text: 'Profil Anda telah diperbarui',
-      icon: 'success',
-      confirmButtonColor: '#4CAF50',
-      timer: 1500
-    })
-  } catch (error) {
-    Swal.fire({
-      title: 'Gagal!',
-      text: 'Terjadi kesalahan saat menyimpan perubahan',
-      icon: 'error',
-      confirmButtonColor: '#f44336'
-    })
-  } finally {
-    saving.value = false
-  }
+    saving.value = true
+    try {
+        await new Promise(resolve => setTimeout(resolve, 1500))
+        Object.assign(originalAccount.value, account)
+        Swal.fire({
+            title: 'Berhasil!',
+            text: 'Profil Anda telah diperbarui',
+            icon: 'success',
+            confirmButtonColor: '#4CAF50',
+            timer: 1500
+        })
+    } catch (error) {
+        Swal.fire({
+            title: 'Gagal!',
+            text: 'Terjadi kesalahan saat menyimpan perubahan',
+            icon: 'error',
+            confirmButtonColor: '#f44336'
+        })
+    } finally {
+        saving.value = false
+    }
 }
 
 function resetAccountForm() {
-  Object.assign(account, originalAccount.value)
+    Object.assign(account, originalAccount.value)
 }
 
 async function changePassword() {
-  if (!password.current || !password.new || !password.confirm) {
-    return Swal.fire({
-      title: 'Error!',
-      text: 'Harap isi semua field password',
-      icon: 'error',
-      confirmButtonColor: '#f44336'
-    })
-  }
+    if (!password.current || !password.new || !password.confirm) {
+        return Swal.fire({
+            title: 'Error!',
+            text: 'Harap isi semua field password',
+            icon: 'error',
+            confirmButtonColor: '#f44336'
+        })
+    }
 
-  if (password.new !== password.confirm) {
-    return Swal.fire({
-      title: 'Error!',
-      text: 'Password baru dan konfirmasi tidak cocok',
-      icon: 'error',
-      confirmButtonColor: '#f44336'
-    })
-  }
+    if (password.new !== password.confirm) {
+        return Swal.fire({
+            title: 'Error!',
+            text: 'Password baru dan konfirmasi tidak cocok',
+            icon: 'error',
+            confirmButtonColor: '#f44336'
+        })
+    }
 
-  if (password.new.length < 6) {
-    return Swal.fire({
-      title: 'Error!',
-      text: 'Password baru minimal 6 karakter',
-      icon: 'error',
-      confirmButtonColor: '#f44336'
-    })
-  }
+    if (password.new.length < 6) {
+        return Swal.fire({
+            title: 'Error!',
+            text: 'Password baru minimal 6 karakter',
+            icon: 'error',
+            confirmButtonColor: '#f44336'
+        })
+    }
 
-  changingPassword.value = true
+    changingPassword.value = true
 
-  try {
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    password.current = ''
-    password.new = ''
-    password.confirm = ''
+    try {
+        await new Promise(resolve => setTimeout(resolve, 2000))
+        password.current = ''
+        password.new = ''
+        password.confirm = ''
 
-    Swal.fire({
-      title: 'Password Diubah!',
-      text: 'Password Anda berhasil diubah',
-      icon: 'success',
-      confirmButtonColor: '#4CAF50'
-    })
-  } catch {
-    Swal.fire({
-      title: 'Gagal!',
-      text: 'Password saat ini tidak sesuai',
-      icon: 'error',
-      confirmButtonColor: '#f44336'
-    })
-  } finally {
-    changingPassword.value = false
-  }
+        Swal.fire({
+            title: 'Password Diubah!',
+            text: 'Password Anda berhasil diubah',
+            icon: 'success',
+            confirmButtonColor: '#4CAF50'
+        })
+    } catch {
+        Swal.fire({
+            title: 'Gagal!',
+            text: 'Password saat ini tidak sesuai',
+            icon: 'error',
+            confirmButtonColor: '#f44336'
+        })
+    } finally {
+        changingPassword.value = false
+    }
 }
 
 function logoutDevice() {
-  Swal.fire({
-    title: 'Keluar dari Perangkat?',
-    text: 'Anda akan keluar dari perangkat iPhone 13',
-    icon: 'question',
-    showCancelButton: true,
-    confirmButtonText: 'Ya, Keluar',
-    cancelButtonText: 'Batal',
-    confirmButtonColor: '#4CAF50'
-  }).then(result => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: 'Berhasil!',
-        text: 'Anda telah keluar dari perangkat tersebut',
-        icon: 'success',
+    Swal.fire({
+        title: 'Keluar dari Perangkat?',
+        text: 'Anda akan keluar dari perangkat iPhone 13',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, Keluar',
+        cancelButtonText: 'Batal',
         confirmButtonColor: '#4CAF50'
-      })
-    }
-  })
+    }).then(result => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Berhasil!',
+                text: 'Anda telah keluar dari perangkat tersebut',
+                icon: 'success',
+                confirmButtonColor: '#4CAF50'
+            })
+        }
+    })
 }
 
 function logoutAllDevices() {
-  Swal.fire({
-    title: 'Keluar dari Semua Perangkat?',
-    text: 'Anda akan keluar dari semua perangkat kecuali yang saat ini',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#d33',
-    cancelButtonColor: '#3085d6',
-    confirmButtonText: 'Ya, Keluar Semua',
-    cancelButtonText: 'Batal'
-  }).then(result => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: 'Berhasil!',
-        text: 'Anda telah keluar dari semua perangkat lain',
-        icon: 'success',
-        confirmButtonColor: '#4CAF50'
-      })
-    }
-  })
+    Swal.fire({
+        title: 'Keluar dari Semua Perangkat?',
+        text: 'Anda akan keluar dari semua perangkat kecuali yang saat ini',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, Keluar Semua',
+        cancelButtonText: 'Batal'
+    }).then(result => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Berhasil!',
+                text: 'Anda telah keluar dari semua perangkat lain',
+                icon: 'success',
+                confirmButtonColor: '#4CAF50'
+            })
+        }
+    })
 }
 
 function saveNotificationSettings() {
-  Swal.fire({
-    title: 'Pengaturan Disimpan!',
-    text: 'Preferensi notifikasi Anda telah diperbarui',
-    icon: 'success',
-    confirmButtonColor: '#4CAF50',
-    timer: 1500
-  })
+    Swal.fire({
+        title: 'Pengaturan Disimpan!',
+        text: 'Preferensi notifikasi Anda telah diperbarui',
+        icon: 'success',
+        confirmButtonColor: '#4CAF50',
+        timer: 1500
+    })
 }
 
 function resetNotificationSettings() {
-  Swal.fire({
-    title: 'Reset Pengaturan?',
-    text: 'Semua pengaturan notifikasi akan dikembalikan ke default',
-    icon: 'question',
-    showCancelButton: true,
-    confirmButtonText: 'Ya, Reset',
-    cancelButtonText: 'Batal',
-    confirmButtonColor: '#4CAF50'
-  }).then(result => {
-    if (result.isConfirmed) {
-      notifications.email = { promotions: true, newProducts: true, articles: true }
-      notifications.push = { orderUpdates: true, stockReminders: false, community: true }
-      notifications.sms = { orderConfirmation: true, shippingUpdates: false }
-
-      Swal.fire({
-        title: 'Berhasil!',
-        text: 'Pengaturan notifikasi telah direset',
-        icon: 'success',
+    Swal.fire({
+        title: 'Reset Pengaturan?',
+        text: 'Semua pengaturan notifikasi akan dikembalikan ke default',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, Reset',
+        cancelButtonText: 'Batal',
         confirmButtonColor: '#4CAF50'
-      })
-    }
-  })
+    }).then(result => {
+        if (result.isConfirmed) {
+            notifications.email = { promotions: true, newProducts: true, articles: true }
+            notifications.push = { orderUpdates: true, stockReminders: false, community: true }
+            notifications.sms = { orderConfirmation: true, shippingUpdates: false }
+
+            Swal.fire({
+                title: 'Berhasil!',
+                text: 'Pengaturan notifikasi telah direset',
+                icon: 'success',
+                confirmButtonColor: '#4CAF50'
+            })
+        }
+    })
 }
 
 function exportData() {
-  Swal.fire({
-    title: 'Ekspor Data',
-    text: 'Data Anda akan diekspor dan dikirim ke email dalam 24 jam',
-    icon: 'info',
-    confirmButtonColor: '#4CAF50'
-  })
+    Swal.fire({
+        title: 'Ekspor Data',
+        text: 'Data Anda akan diekspor dan dikirim ke email dalam 24 jam',
+        icon: 'info',
+        confirmButtonColor: '#4CAF50'
+    })
 }
 
 function clearHistory() {
-  Swal.fire({
-    title: 'Hapus Riwayat?',
-    text: 'Semua riwayat pencarian dan aktivitas akan dihapus',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#d33',
-    cancelButtonColor: '#3085d6',
-    confirmButtonText: 'Ya, Hapus',
-    cancelButtonText: 'Batal'
-  }).then(result => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: 'Berhasil!',
-        text: 'Riwayat telah berhasil dihapus',
-        icon: 'success',
-        confirmButtonColor: '#4CAF50'
-      })
-    }
-  })
+    Swal.fire({
+        title: 'Hapus Riwayat?',
+        text: 'Semua riwayat pencarian dan aktivitas akan dihapus',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, Hapus',
+        cancelButtonText: 'Batal'
+    }).then(result => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Berhasil!',
+                text: 'Riwayat telah berhasil dihapus',
+                icon: 'success',
+                confirmButtonColor: '#4CAF50'
+            })
+        }
+    })
 }
 
 function deleteAccount() {
-  Swal.fire({
-    title: 'Hapus Akun Permanen?',
-    text: 'Tindakan ini tidak dapat dibatalkan.',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#d33',
-    cancelButtonColor: '#3085d6',
-    confirmButtonText: 'Ya, Hapus Akun',
-    cancelButtonText: 'Batal',
-    input: 'text',
-    inputPlaceholder: 'Ketik "HAPUS" untuk konfirmasi',
-    inputValidator: value => {
-      if (value !== 'HAPUS') return 'Harap ketik HAPUS untuk konfirmasi'
-    }
-  }).then(result => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: 'Akun Dihapus!',
-        text: 'Akun Anda telah berhasil dihapus',
-        icon: 'success',
-        confirmButtonColor: '#4CAF50'
-      }).then(() => {
-        router.push('/')
-      })
-    }
-  })
+    Swal.fire({
+        title: 'Hapus Akun Permanen?',
+        text: 'Tindakan ini tidak dapat dibatalkan.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, Hapus Akun',
+        cancelButtonText: 'Batal',
+        input: 'text',
+        inputPlaceholder: 'Ketik "HAPUS" untuk konfirmasi',
+        inputValidator: value => {
+            if (value !== 'HAPUS') return 'Harap ketik HAPUS untuk konfirmasi'
+        }
+    }).then(result => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Akun Dihapus!',
+                text: 'Akun Anda telah berhasil dihapus',
+                icon: 'success',
+                confirmButtonColor: '#4CAF50'
+            }).then(() => {
+                router.push('/')
+            })
+        }
+    })
 }
 </script>
 
@@ -751,7 +704,7 @@ function deleteAccount() {
     grid-template-columns: 280px 1fr;
     gap: 40px;
     align-items: start;
-    
+
     @media (max-width: 992px) {
         grid-template-columns: 1fr;
     }
@@ -760,7 +713,7 @@ function deleteAccount() {
 .settings-sidebar {
     position: sticky;
     top: 100px;
-    
+
     @media (max-width: 992px) {
         position: static;
     }
@@ -781,23 +734,23 @@ function deleteAccount() {
         margin-bottom: 8px;
         text-align: left;
         color: $text;
-        
+
         &:hover {
             background: $primary-light;
             color: $primary;
         }
-        
+
         &.active {
             background: $primary;
             color: $white;
         }
-        
+
         i {
             width: 20px;
             text-align: center;
             font-size: 1.1rem;
         }
-        
+
         span {
             font-weight: 500;
         }
@@ -806,7 +759,7 @@ function deleteAccount() {
 
 .tab-content {
     padding: 30px;
-    
+
     h3 {
         color: $text;
         margin-bottom: 25px;
@@ -821,13 +774,13 @@ function deleteAccount() {
         gap: 20px;
         margin-bottom: 20px;
     }
-    
+
     .form-actions {
         display: flex;
         gap: 15px;
         justify-content: flex-end;
         margin-top: 30px;
-        
+
         @media (max-width: 576px) {
             flex-direction: column;
         }
@@ -837,19 +790,20 @@ function deleteAccount() {
 .security-sections,
 .notification-sections,
 .privacy-sections {
+
     .security-section,
     .notification-section,
     .privacy-section {
         margin-bottom: 40px;
         padding-bottom: 30px;
         border-bottom: 1px solid $light-bg;
-        
+
         &:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
-        
+
         h4 {
             color: $text;
             margin-bottom: 20px;
@@ -864,11 +818,11 @@ function deleteAccount() {
 
 .password-input {
     position: relative;
-    
+
     input {
         padding-right: 45px !important;
     }
-    
+
     .password-toggle {
         position: absolute;
         right: 12px;
@@ -879,7 +833,7 @@ function deleteAccount() {
         color: $light-text;
         cursor: pointer;
         padding: 5px;
-        
+
         &:hover {
             color: $primary;
         }
@@ -896,7 +850,7 @@ function deleteAccount() {
     background: $light-bg;
     border-radius: 12px;
     margin-bottom: 15px;
-    
+
     &:last-child {
         margin-bottom: 0;
     }
@@ -906,13 +860,13 @@ function deleteAccount() {
 .notification-info,
 .privacy-info {
     flex: 1;
-    
+
     h5 {
         margin-bottom: 5px;
         color: $text;
         font-size: 1rem;
     }
-    
+
     p {
         margin: 0;
         color: $light-text;
@@ -926,21 +880,21 @@ function deleteAccount() {
     display: inline-block;
     width: 50px;
     height: 24px;
-    
+
     input {
         opacity: 0;
         width: 0;
         height: 0;
-        
-        &:checked + .slider {
+
+        &:checked+.slider {
             background-color: $primary;
         }
-        
-        &:checked + .slider:before {
+
+        &:checked+.slider:before {
             transform: translateX(26px);
         }
     }
-    
+
     .slider {
         position: absolute;
         cursor: pointer;
@@ -951,7 +905,7 @@ function deleteAccount() {
         background-color: #ccc;
         transition: $transition;
         border-radius: 24px;
-        
+
         &:before {
             position: absolute;
             content: "";
@@ -972,7 +926,7 @@ function deleteAccount() {
     background: $white;
     border-radius: 12px;
     border: 2px dashed $light-bg;
-    
+
     .setup-info {
         display: flex;
         align-items: center;
@@ -980,7 +934,7 @@ function deleteAccount() {
         color: $light-text;
         margin-bottom: 15px;
         font-size: 0.9rem;
-        
+
         i {
             color: $primary;
         }
@@ -993,14 +947,14 @@ function deleteAccount() {
     background: $light-bg;
     border-radius: 8px;
     margin-bottom: 15px;
-    
+
     i {
         font-size: 3rem;
         color: $light-text;
         margin-bottom: 10px;
         display: block;
     }
-    
+
     p {
         color: $light-text;
         margin: 0;
@@ -1016,7 +970,7 @@ function deleteAccount() {
         background: $light-bg;
         border-radius: 8px;
         margin-bottom: 10px;
-        
+
         &:last-child {
             margin-bottom: 0;
         }
@@ -1029,13 +983,13 @@ function deleteAccount() {
         color: $text;
         font-size: 0.95rem;
     }
-    
+
     p {
         margin: 0;
         color: $light-text;
         font-size: 0.85rem;
     }
-    
+
     .session-time {
         font-size: 0.8rem;
         color: $primary;
@@ -1051,7 +1005,7 @@ function deleteAccount() {
 .data-actions {
     display: flex;
     gap: 15px;
-    
+
     @media (max-width: 576px) {
         flex-direction: column;
     }
@@ -1061,7 +1015,7 @@ function deleteAccount() {
     background: #ffebee !important;
     border: 1px solid #f44336;
     padding: 25px !important;
-    
+
     h4 {
         color: #f44336 !important;
     }
@@ -1073,7 +1027,7 @@ function deleteAccount() {
 
 .delete-account-btn {
     background: #f44336;
-    
+
     &:hover {
         background: #d32f2f;
     }
@@ -1086,7 +1040,7 @@ function deleteAccount() {
     color: #f44336;
     font-size: 0.9rem;
     margin: 0;
-    
+
     i {
         font-size: 1.1rem;
     }
@@ -1096,7 +1050,7 @@ function deleteAccount() {
     .tab-content {
         padding: 20px;
     }
-    
+
     .setting-item,
     .notification-item,
     .privacy-item {
@@ -1104,7 +1058,7 @@ function deleteAccount() {
         align-items: flex-start;
         gap: 15px;
     }
-    
+
     .sessions-list .session-item {
         flex-direction: column;
         align-items: flex-start;
@@ -1117,7 +1071,7 @@ function deleteAccount() {
         padding: 12px 15px;
         font-size: 0.9rem;
     }
-    
+
     .form-actions {
         .btn {
             width: 100%;

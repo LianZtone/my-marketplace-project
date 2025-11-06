@@ -33,8 +33,8 @@
                     </div>
 
                     <UserMenu :user="user" :cart-count="cartCount" />
-                        
-                    
+
+
 
 
                     <div class="hamburger" @click="toggleMenu" :class="{ active: isMenuActive }">
@@ -82,18 +82,6 @@ window.addEventListener("scroll", () => {
     }
 });
 
-
-// function handleSearch() {
-//     if (searchQuery.value.trim()) {
-//         console.log('Searching for:', searchQuery.value)
-//         openSearch()
-//     }
-// }
-
-
-// function toggleDropdown() {
-//     isDropdownOpen.value = !isDropdownOpen.value
-// }
 
 function handleClickOutside(event) {
     const menu = document.querySelector('.user-menu')
@@ -317,6 +305,7 @@ header {
 .overlay {
     height: 100%;
     width: 100%;
+    max-width: 100%;
     display: none;
     position: fixed;
     z-index: 1;
@@ -334,7 +323,8 @@ header {
         border: none;
         border-radius: 100px;
         top: 46%;
-        width: 80%;
+        width: 100%;
+        max-width: 500px;
         text-align: center;
         margin-top: 30px;
         margin: auto;
@@ -355,7 +345,6 @@ header {
     }
 
 
-    /* Style the search field */
     input[type=text] {
         padding: 15px;
         border: none;
@@ -368,11 +357,17 @@ header {
         background: $white;
 
         &:hover {
-            background: #f1f1f1;
+            background: $primary-light;
+            outline: none;
+        }
+
+        &:focus {
+            border-color: $primary;
+            outline: none;
+            box-shadow: 0 0 2px $primary;
         }
     }
 
-    /* Style the submit button */
     button {
         float: left;
         width: 20%;

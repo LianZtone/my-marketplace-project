@@ -17,38 +17,45 @@
     </section>
 </template>
 
-<script>
-export default {
-    name: 'Categories',
-    data() {
-        return {
-            categories: [
-                {
-                    id: 1,
-                    name: 'Makanan Sehat',
-                    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
-                },
-                {
-                    id: 2,
-                    name: 'Minuman Herbal',
-                    image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
-                },
-                {
-                    id: 3,
-                    name: 'Skincare Organik',
-                    image: 'https://plus.unsplash.com/premium_photo-1661454224348-5ebd8dc380bb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170'
-                }
-            ]
-        }
-    }
-}
+<script setup>
+import { ref } from 'vue'
+
+import imgpost1 from '../../assets/images/products/nrd-D6Tu_L3chLE-unsplash.webp'
+import imgpost2 from '../../assets/images/products/lisa-hobbs-mRaNok_Ld6s-unsplash.webp'
+import imgpost3 from '../../assets/images/products/kseniya-kolesnikova-pDTMaJFTLLo-unsplash.webp'
+import imgpost4 from '../../assets/images/products/s-o-c-i-a-l-c-u-t-I28KoP7YM7U-unsplash.webp'
+
+const categories = ref([
+  {
+    id: 1,
+    name: 'Makanan Sehat',
+    image: imgpost1
+  },
+  {
+    id: 2,
+    name: 'Minuman Herbal',
+    image: imgpost2
+  },
+  {
+    id: 3,
+    name: 'Skincare Organik',
+    image: imgpost3
+  },
+  {
+    id: 4,
+    name: 'Buah segar',
+    image: imgpost4
+  }
+])
 </script>
 
 <style lang="scss" scoped>
 @import "@/style.scss";
 
 .categories {
-    margin: 80px 0;
+    padding: 0px 0;
+    background: linear-gradient(to bottom, $white, $light-bg);
+
 }
 
 .category-container {

@@ -52,10 +52,10 @@
     </footer>
 </template>
 
-<script>
-export default {
-    name: 'Footer'
-}
+<script setup>
+defineOptions({
+    name : 'Footer'
+})
 </script>
 
 <style lang="scss" scoped>
